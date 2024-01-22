@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from "../../utils/axios";
 import requests from '../../utils/requests';
-import "../Banner/Banner.css"
+import "./Banner.css"
 
 const Banner = () => {
     const [movie, setMovie] = useState({});
@@ -9,7 +9,7 @@ const Banner = () => {
         (async () => {
             try {
                 const request = await axios.get(requests.fetchNetflixOriginals)
-                console.log(request)
+                // console.log(request)
                 setMovie(request.data.results[
                     Math.floor(Math.random() * request.data.results.length)
                 ]);
@@ -32,17 +32,17 @@ const Banner = () => {
                 backgroundRepeat: "no-repeat"
             }}
         >
-        <div className="banner__contents">
-            <h1 className="banner__title">
+        <div className="banner_contents">
+            <h1 className="banner_title">
                 {movie?.title || movie?.name || movie?.original_name}
             </h1>
-            <div className="banner__buttons">
-                <button className="banner__button play">Play</button>
-                <button className="banner__button">My List</button>
+            <div className="banner_buttons">
+                <button className="banner_button play">Play</button>
+                <button className="banner_button">My List</button>
             </div>
-            <h1 className="banner__description">{truncate(movie?.overview, 150)}</h1>
+            <h1 className="banner_description">{truncate(movie?.overview, 150)}</h1>
         </div>
-        <div className="banner__fadeBottom" />
+        <div className="banner_fadeBottom" />
     </div>
   )
 }
